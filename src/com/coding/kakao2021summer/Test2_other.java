@@ -1,6 +1,6 @@
 package com.coding.kakao2021summer;
 
-public class Test2_kunggin {
+public class Test2_other {
     boolean keepDistance = true;
     int startRow;
     int startCol;
