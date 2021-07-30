@@ -1,4 +1,4 @@
-package com.coding.kakao2021summer;
+package com.coding.kakao2021.summer;
 
 import java.util.Stack;
 
