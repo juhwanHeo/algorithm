@@ -26,6 +26,7 @@ public class Test5_Parametric_Search {
 
         return binarySearch(stones, k, min, max);
     }
+
     private static int binarySearch(int[] stones, int limit, int min, int max) {
         if(min == max) return min;
         while(min < max) {
