@@ -2,8 +2,12 @@ package com.coding.kakao2019.winter;
 
 import java.util.*;
 
+/*
+ * @2019 kakao winter internship
+ * @TestName: 튜플
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/64065
+ */
 public class Test2 {
-
     public static int[] solution(String s) {
         List<Integer> list = new ArrayList<>();
         String[] strs = s.replaceAll("[{}]", " ").trim().split(" ,");
@@ -24,12 +28,10 @@ public class Test2 {
                 .toArray();
     }
 
-
     public static void main(String[] args) {
         String s1 = "{{2},{2,1},{2,1,3},{2,1,3,4}}";
         int[] myRes1 = solution(s1);
         int[] res = {2, 1, 3, 4};
-
 
         System.out.println("answer1 my: "+ Arrays.toString(myRes1));
         System.out.println("answer1 answer: " + Arrays.toString(res));

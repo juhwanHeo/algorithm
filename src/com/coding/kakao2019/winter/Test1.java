@@ -3,8 +3,12 @@ package com.coding.kakao2019.winter;
 import java.util.Arrays;
 import java.util.Stack;
 
+/*
+ * @2019 kakao winter internship
+ * @TestName: 크레인 인형뽑기 게임
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/64061
+ */
 public class Test1 {
-
     public static int solution(int[][] board, int[] moves) {
         int answer = 0;
         /*

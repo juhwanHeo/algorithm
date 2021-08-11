@@ -1,9 +1,13 @@
 package com.coding.kakao2019.winter;
 
 import java.util.*;
+
 /*
- * 정확성은 해결 했지만 효율성 해결이 안되서
- * https://bcp0109.tistory.com/188?category=885291 참고
+ * @2019 kakao winter internship
+ * @TestName: 호텔 방 배정
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/64063
+ * @COMMENT: 정확성은 해결 했지만 효율성 해결이 안되서
+ *           https://bcp0109.tistory.com/188?category=885291 참고
  */
 public class Test4 {
 //    static long[] room;

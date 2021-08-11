@@ -3,16 +3,17 @@ package com.coding.kakao2019.winter;
 import java.util.*;
 
 /*
- * 정확성은 해결 했지만 효율성 해결이 안되서
- * https://bcp0109.tistory.com/189?category=885291 참고
- * https://www.crocus.co.kr/1000 공부하기
-*/
-
+ * @2019 kakao winter internship
+ * @TestName: 징검다리 건너기
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/64062
+ * @COMMENT: 정확성은 해결 했지만 효율성 해결이 안되서
+ *           https://bcp0109.tistory.com/189?category=885291 참고
+ *           https://www.crocus.co.kr/1000 공부하기
+ */
 public class Test5_Parametric_Search {
     static int solution(int[] stones, int k) {
 //        int max = Integer.MIN_VALUE;
 //        int min = Integer.MAX_VALUE;
-
 //        for (int stone : stones) {
 //            max = Math.max(max, stone);
 //            min = Math.min(min, stone);

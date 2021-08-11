@@ -2,11 +2,14 @@ package com.coding.kakao2020.internship;
 
 import java.util.*;
 
+/*
+ * @2020 kakao internship
+ * @TestName: 보석 쇼핑
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/67258
+ * @COMMENT: 효율성 테스트에서 통과하지 못해 질문하기에 있던 jujubebat님의 문제 풀이
+ *           * 투 포인터 학습 필요
+ */
 public class Test3 {
-    /*
-    * 효율성 테스트에서 통과하지 못해
-    * 질문하기에 있던 jujubebat님의 문제 풀이
-    */
     public static int[] solution(String[] gems) {
         Set<String> setGems = new HashSet<>(Arrays.asList(gems));
         Map<String, Integer> map = new HashMap<>();

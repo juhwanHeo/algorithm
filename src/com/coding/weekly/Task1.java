@@ -1,16 +1,10 @@
-package com.coding.weekly.week1;
+package com.coding.weekly;
 
 /*
--- 코드를 입력하세요
-SELECT
-    ANIMAL_ID
-FROM
-    ANIMAL_INS
-WHERE 1=1
-    AND NVL(NAME, 'NULL') = 'NULL'
-ORDER BY 1 DESC;
-*/
-
+ * @Weekly 1
+ * @TestName: 부족한 금액 계산하기
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/82612
+ */
 public class Task1 {
     public static long solution(int price, int money, int count) {
         long answer = 0;

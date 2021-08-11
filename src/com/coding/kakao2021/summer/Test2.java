@@ -1,6 +1,13 @@
 package com.coding.kakao2021.summer;
 
 import java.util.*;
+
+/*
+ * @2021 kakao summber internship
+ * @TestName: 거리두기 확인하기
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/81302
+ * @COMMENT:
+ */
 class Point {
     private int x;
     private int y;

@@ -5,6 +5,13 @@ import java.util.*;
 *
 * 효율성 테스트 9, 10 해결 x
 */
+
+/*
+ * @2020 kakao internship
+ * @TestName: 동굴 탐험
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/67260
+ * @COMMENT: 효율성 테스트 9, 10 해결 x
+ */
 public class Test5 {
     static List<Integer>[] adjList;
     static List<Integer>[] directAdjList;

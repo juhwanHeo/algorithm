@@ -1,8 +1,12 @@
 package com.coding.level1;
 
-
 import java.util.*;
 
+/*
+ * @level1
+ * @TestName: 완주하지 못한 선수
+ * @URL:https://programmers.co.kr/learn/courses/30/lessons/42576
+ */
 public class NotWanju {
     public static String solution(String[] participant, String[] completion) {
         Arrays.sort(participant);

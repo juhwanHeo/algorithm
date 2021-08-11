@@ -1,8 +1,12 @@
 package com.coding.level1;
 
-
 import java.util.*;
 
+/*
+ * @level1
+ * @TestName: 모의고사
+ * @URL:https://programmers.co.kr/learn/courses/30/lessons/42840
+ */
 public class Mouigosa {
     static int[] person1 = {1, 2, 3, 4, 5};
     static int[] person2 = {2, 1, 2, 3, 2, 4, 2, 5};

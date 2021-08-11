@@ -2,6 +2,11 @@ package com.coding.kakao2020.internship;
 
 import java.util.Arrays;
 
+/*
+ * @2020 kakao internship
+ * @TestName: 키패드 누르기
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/67256
+ */
 class Point {
     int x;
     int y;

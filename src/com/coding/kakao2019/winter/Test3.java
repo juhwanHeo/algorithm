@@ -2,14 +2,14 @@ package com.coding.kakao2019.winter;
 
 import java.util.*;
 
+/*
+ * @2019 kakao winter internship
+ * @TestName: 불량 사용자
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/64064
+ * @COMMENT: https://daehun93.github.io/%EC%88%9C%EC%97%B4-%EC%A1%B0%ED%95%A9-%EC%99%84%EB%B2%BD%EC%A0%95%EB%A6%AC/ 참고
+ *           https://bcp0109.tistory.com/14#comment14639188 도 참고하기
+ */
 public class Test3 {
-    /*
-    * https://daehun93.github.io/%EC%88%9C%EC%97%B4-%EC%A1%B0%ED%95%A9-%EC%99%84%EB%B2%BD%EC%A0%95%EB%A6%AC/
-    * 참고
-    * https://bcp0109.tistory.com/14#comment14639188 도
-    * 참고하기
-    */
-
     static HashSet<HashSet<String>> hhs;
     static boolean[] visited;
     public static int solution(String[] user_id, String[] banned_id) {

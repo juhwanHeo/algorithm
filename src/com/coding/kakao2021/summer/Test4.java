@@ -1,11 +1,16 @@
 package com.coding.kakao2021.summer;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
+/*
+ * @2021 kakao summber internship
+ * @TestName: 미로 탈출
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/81304
+ * @COMMENT: 우선순위 큐를 이용한 다익스트라 알고리즘 공부 필요
+ */
 class Node implements Comparable<Node>{
     int start, end, weight;
 
@@ -25,7 +30,6 @@ class Node implements Comparable<Node>{
         start = end;
         end = temp;
     }
-
 
     @Override
     public int compareTo(Node node) {
@@ -121,7 +125,3 @@ public class Test4 {
     }
 
 }
-
-
-//            boolean isTrap = Arrays.stream(traps)
-//                        .noneMatch((a) -> a == cur);

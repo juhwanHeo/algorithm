@@ -3,6 +3,13 @@ package com.coding.kakao2020.internship;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+
+/*
+ * @2020 kakao internship
+ * @TestName: 경주로 건설
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/67259
+ * @COMMENT: BFS로도 구현 해보기
+ */
 class Node{
     int x;
     int y;

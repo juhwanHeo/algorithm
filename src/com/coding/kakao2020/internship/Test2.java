@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-
+/*
+ * @2020 kakao internship
+ * @TestName: 수식 최대화
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/67257
+ */
 public class Test2 {
     static String[][] op = {
             {"+", "-", "*"},

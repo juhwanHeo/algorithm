@@ -1,5 +1,11 @@
 package com.coding.kakao2021.summer;
 
+/*
+ * @2021 kakao summber internship
+ * @TestName: 거리두기 확인하기
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/81302
+ * @COMMENT: dfs를 활용한 풀이
+ */
 public class Test2_other {
     boolean keepDistance = true;
     int startRow;

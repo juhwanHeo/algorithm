@@ -1,7 +1,12 @@
 package com.coding.kakao2020.internship;
 
 import java.util.*;
-
+/*
+ * @2020 kakao internship
+ * @TestName: 경주로 건설
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/67259
+ * @COMMENT: BFS로도 구현 해보기, '질문하기'에 김현준님 코드 참고
+ */
 public class Test4 {
     static boolean[][] visited;
     static int[][] dp;  //{{0, 1}, {0, -1}, {1, 0}, {-1, 0}}

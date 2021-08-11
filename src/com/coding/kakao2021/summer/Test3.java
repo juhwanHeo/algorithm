@@ -1,7 +1,11 @@
 package com.coding.kakao2021.summer;
 
 import java.util.Stack;
-
+/*
+ * @2021 kakao summber internship
+ * @TestName: 거리두기 확인하기
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/81303
+ */
 public class Test3 {
     public static String solution(int n, int k, String[] cmd) {
         int select = k;

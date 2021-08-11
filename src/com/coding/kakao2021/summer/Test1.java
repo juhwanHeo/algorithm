@@ -1,6 +1,10 @@
 package com.coding.kakao2021.summer;
 
-
+/*
+ * @2021 kakao summber internship
+ * @TestName: 숫자 문자열과 영단어
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/81301
+ */
 public class Test1 {
     public static void main(String[] args) {
         String s = "";
