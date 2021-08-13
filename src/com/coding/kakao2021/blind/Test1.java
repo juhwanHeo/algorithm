@@ -1,6 +1,5 @@
 package com.coding.kakao2021.blind;
 
-
 /*
  * @2021 kakao blind recruitment
  * @TestName: 신규 아이디 추천
