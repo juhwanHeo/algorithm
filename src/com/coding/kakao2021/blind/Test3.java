@@ -63,7 +63,7 @@ public class Test3 {
         return str;
     }
 
-    static void comb(String[] arr,Set<String> hs, int depth, int n, int r) {
+    static void comb(String[] arr, Set<String> hs, int depth, int n, int r) {
         if(r == 0) {
             hs.add(getComb(arr, n));
             return;

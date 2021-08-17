@@ -50,9 +50,9 @@ public class Test4Dijk {
         int[] startB = new int[n];
         int[] start = new int[n];
 
-        Arrays.fill(startA, 100000 * n);
-        Arrays.fill(startB, 100000 * n);
-        Arrays.fill(start, 100000 * n);
+        Arrays.fill(startA, Integer.MAX_VALUE);
+        Arrays.fill(startB, Integer.MAX_VALUE);
+        Arrays.fill(start, Integer.MAX_VALUE);
 
         dijkstra(a - 1, startA);
         dijkstra(b - 1, startB);
