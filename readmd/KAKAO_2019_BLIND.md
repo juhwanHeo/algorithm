@@ -1,0 +1,1 @@
+# KAKAO_2019_BLIND
