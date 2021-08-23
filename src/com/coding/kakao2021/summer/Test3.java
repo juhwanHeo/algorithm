@@ -3,7 +3,7 @@ package com.coding.kakao2021.summer;
 import java.util.Stack;
 /*
  * @2021 kakao summber internship
- * @TestName: 거리두기 확인하기
+ * @TestName: 표 편집
  * @URL: https://programmers.co.kr/learn/courses/30/lessons/81303
  */
 public class Test3 {
@@ -23,26 +23,25 @@ public class Test3 {
             // C 삭제
             else if(str.equals("C")) {
                 backup.push(select);
-                select = (select == curLen-1) ? select - 1 : select;
+                select = (select == curLen - 1) ? select - 1 : select;
                 curLen -= 1;
             }
-            // Z
+            // Z 복구 =
             else if(str.equals("Z")) {
                 int backupIndex = backup.pop();
-                select = (select >= backupIndex) ? select - 1: select;
+                select = (select >= backupIndex) ? select + 1 : select;
                 curLen += 1;
             }
         }
 
         StringBuilder answer = new StringBuilder();
-        for(int i = 0; i < curLen; i++) {
-            answer.append("O");
-        }
+        for(int i = 0; i < curLen; i++) answer.append("O");
 
         while(!backup.isEmpty()) {
             int backupIndex = backup.pop();
             answer.insert(backupIndex, "X");
         }
+
         return answer.toString();
     }
 

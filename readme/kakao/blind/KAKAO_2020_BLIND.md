@@ -1,0 +1,1 @@
+# KAKAO 2020 BLIND
