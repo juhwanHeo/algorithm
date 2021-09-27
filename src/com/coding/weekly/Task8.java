@@ -10,9 +10,7 @@ import java.util.*;
 public class Task8 {
 
     public static int solution(int[][] sizes) {
-        for (int[] size : sizes) {
-            Arrays.sort(size);
-        }
+        for (int[] size : sizes) Arrays.sort(size);
 
         int maxWidth = Arrays.stream(sizes)
                 .mapToInt(arr-> arr[0])
