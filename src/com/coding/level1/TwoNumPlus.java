@@ -34,7 +34,9 @@ public class TwoNumPlus {
             set.add(getComb(arr, n));
             return;
         }
+
         if(depth == n) return;
+
         visited[depth] = true;
         comb(arr, depth + 1, set, n,r - 1);
         visited[depth] = false;

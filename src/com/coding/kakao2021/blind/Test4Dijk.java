@@ -11,24 +11,30 @@ import java.util.*;
 class Edge implements Comparable<Edge>{
     int next;
     int cost;
+
     Edge(int next, int cost){
         this.next = next;
         this.cost = cost;
     }
+
     @Override
     public int compareTo(Edge e){
         return this.cost - e.cost;
     }
 }
 public class Test4Dijk {
+
     static ArrayList<ArrayList<Edge>> graph;
     private static void dijkstra(int start, int[] costs){
         PriorityQueue<Edge> pq = new PriorityQueue<>(graph.get(start));
+
         for(Edge e : graph.get(start)) costs[e.next] = e.cost;
+
         costs[start] = 0;
         while(!pq.isEmpty()){
             Edge e = pq.poll();
             if(costs[e.next] < e.cost) continue;
+
             for(Edge ne : graph.get(e.next)){
                 if(costs[ne.next] > e.cost + ne.cost){
                     costs[ne.next] = e.cost + ne.cost;
@@ -38,14 +44,18 @@ public class Test4Dijk {
         }
     }
 
+
     public static int solution(int n, int s, int a, int b, int[][] fares) {
         int answer = Integer.MAX_VALUE;
+
         graph = new ArrayList<>();
         for(int i = 0 ; i < n ; i ++) graph.add(new ArrayList<>());
+
         for(int[] i : fares){
             graph.get(i[0] - 1).add(new Edge(i[1] - 1, i[2]));
             graph.get(i[1] - 1).add(new Edge(i[0] - 1, i[2]));
         }
+
         int[] startA = new int[n];
         int[] startB = new int[n];
         int[] start = new int[n];
@@ -58,7 +68,9 @@ public class Test4Dijk {
         dijkstra(b - 1, startB);
         dijkstra(s - 1, start);
 
-        for(int i = 0 ; i < n ; i ++) answer = Math.min(answer, startA[i] + startB[i] + start[i]);
+        for(int i = 0 ; i < n ; i ++)
+            answer = Math.min(answer, startA[i] + startB[i] + start[i]);
+
         return answer;
     }
 
