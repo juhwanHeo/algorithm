@@ -8,14 +8,17 @@ import java.util.*;
  * @URL: https://programmers.co.kr/learn/courses/30/lessons/42839
  */
 public class FindPrime {
+
     static boolean[] visited;
+    static int[] output;
+    static Set<Integer> hs;
     static int solution(String numbers) {
-        Set<Integer> hs = new HashSet<>();
-        int[] output = new int[numbers.length()];
+        hs = new HashSet<>();
+        output = new int[numbers.length()];
 
         for (int i = 0; i <= numbers.length(); i++) {
             visited = new boolean[numbers.length()];
-            perm(numbers.split(""), output, hs, 0, numbers.length(), i);
+            perm(numbers.split(""),  0, numbers.length(), i);
             System.out.println(hs);
 
         }
@@ -34,9 +37,9 @@ public class FindPrime {
         return true;
     }
 
-    static void perm(String[] arr, int[] output, Set<Integer> set, int depth, int n, int r) {
+    static void perm(String[] arr, int depth, int n, int r) {
         if (depth == r) {
-            set.add(getPerm(output, r));
+            hs.add(getPerm(output, r));
             return;
         }
 
@@ -44,7 +47,7 @@ public class FindPrime {
             if (!visited[i]) {
                 visited[i] = true;
                 output[depth] = Integer.parseInt(arr[i]);
-                perm(arr, output, set, depth + 1, n , r);
+                perm(arr, depth + 1, n , r);
                 visited[i] = false;
             }
         }
@@ -52,10 +55,12 @@ public class FindPrime {
 
     static int getPerm(int[] arr, int n) {
         StringBuilder sb = new StringBuilder("0");
+
         for (int i = 0; i < n; i++) sb.append(arr[i]);
 
         return Integer.parseInt(sb.toString());
     }
+
 
     public static void main(String[] args) {
         String nums1 = "17"; //3
@@ -64,4 +69,6 @@ public class FindPrime {
 
     }
 }
+
+
 

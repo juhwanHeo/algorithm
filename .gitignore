@@ -1,6 +1,9 @@
 ### Example user template template
 ### Example user template
 
+
+*/src/com/coding/kakao2022/blind/*
+
 # IntelliJ project files
 .idea
 *.iml
