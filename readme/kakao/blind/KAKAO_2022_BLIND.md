@@ -6,7 +6,7 @@
 
 정답: `3.5` / 7 (문제)  
 컷: `4 ~ 4.5` (문제)  
-체감난이도: 어려웠다. 다 풀이하신 분들보면 존경의 눈빛 (+ - +)  
+체감난이도: 어려웠다. 다 풀이하신 분들보면 존경의 눈빛 `(+ - +)  `
   
 이번 테스트에서는 `맵(자료구조)`을 사용하는 문제와 `완전탐색`하는 문제들이 많이 출제 되었다.   
 나는 완전 탐색문제에 많이 취약한 것 같다.
@@ -266,8 +266,43 @@ public int solution(int[] info, int[][] edges) {
 
 ## 문제6: 파괴되지 않은 건물 (미해결 - 문제 공개 후 해결)
 테스트에선 효율성을 무시하고 정확성만 맞추고  
-문제 공개 후 블로그를 찾아 보며 누적합을 활용하여 해결하는 문제 였다.
+문제 공개 후 블로그를 찾아 보며 누적합 공부  
+ 
+N: skill 횟수  
+M, K: 2 중 for 문   
+기존 풀이: O(N * M * K)  
+누적합 풀이: O(N * M)  
 
+### 기존 풀이
+```java
+ public int solution(int[][] board, int[][] skills) {
+    int answer = 0;
+    
+    for (int[] skill : skills) {
+        int type = skill[0];
+        int degree = type == 2 ? skill[5] : -skill[5];
+        int row1 = skill[1];
+        int row2 = skill[3];
+        int col1 = skill[2];
+        int col2 = skill[4];
+
+
+        for (int row = skill[1]; row <= skill[3]; row++) {
+            for (int col = skill[2]; col <= skill[4]; col++) {
+                board[row][col] += degree;
+            }
+        }
+    }
+
+    for (int[] arr : board) {
+        answer += Arrays.stream(arr).filter(val -> val > 0).count();
+    }
+
+    return answer;
+}
+```
+
+### 누적합 풀이
 ```java
 static int[][] sum;
 static int N, M;
