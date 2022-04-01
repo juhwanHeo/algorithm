@@ -36,8 +36,6 @@ public class WordChange {
                 visited[i] = false;
             }
         }
-
-        System.out.println("=============================\n");
     }
 
     private static boolean isOk(String word, String target) {
