@@ -23,7 +23,6 @@ public class MinCommonN {
     }
 
     public static void main(String[] args) {
-        
         int[] arr = {
                 2, 6, 8, 14
         };
