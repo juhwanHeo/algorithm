@@ -24,6 +24,7 @@ public class Trie {
             node = node.children.computeIfAbsent(str.charAt(i), key -> new Trie());
             node.cnt++;
         }
+
         node.isEnd = true;
     }
 
