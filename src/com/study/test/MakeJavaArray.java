@@ -1,15 +1,31 @@
 package com.study.test;
 
-import java.util.Optional;
+import java.util.Scanner;
 
 /*
-* make Java Array form
-* */
+ * make Java Array form
+ * */
 public class MakeJavaArray {
-    public static void main(String[] args) {
-        String str ="[[5,3],[11,5],[13,3],[3,5],[6,1],[1,3],[8,6],[7,2],[2,2]]";
-        // {{7,4,6,9,1,8,5,2,3},{9,6,5,8,1,4,3,2,7}}
-        System.out.println(str.replaceAll("\\[", "{").replaceAll("]", "}"));
 
+    private static void replace(String str) {
+        String[] split = str.replaceAll("\\[", "{")
+                .replaceAll("]", "}")
+                .replaceAll("}, ", "},#")
+                .split("#");
+
+        for (String s : split) {
+            System.out.println(s);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+
+        System.out.print("입력>>");
+        String str = sc.nextLine();
+
+        replace(str);
+        sc.close();
     }
 }

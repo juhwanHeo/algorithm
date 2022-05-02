@@ -1,12 +1,11 @@
-package com.coding.kakao2017final;
+package com.coding.kakao2017.finalround;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.PriorityQueue;
 
 /*
- * @2018 카카오코드 본선
+ * @2017 카카오코드 본선
  * @TestName: 리틀 프렌즈 사천성
  * @URL: https://programmers.co.kr/learn/courses/30/lessons/1836
  */
