@@ -1,4 +1,4 @@
-package com.coding.kakak2018.blind;
+package com.coding.kakao2018.blind;
 
 import java.util.ArrayList;
 import java.util.List;
