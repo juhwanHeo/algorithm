@@ -1,6 +1,6 @@
 package com.coding.kakao2017.preliminary;
 
-import java.util.Arrays;
+import com.coding.utils.PrintUtils;
 
 /*
  * @2017 카카오코드 예선
@@ -21,35 +21,28 @@ public class PedestrianParadise {
             for (int col = 1; col <= n; col++) {
                 // pass
                 if (cityMap[row - 1][col - 1] == 0){
+                    System.out.println("Pass");
                     dp[row][col][0] += (dp[row - 1][col][0] + dp[row][col - 1][1]) % MOD;
                     dp[row][col][1] += (dp[row - 1][col][0] + dp[row][col - 1][1]) % MOD;
                 }
                 // 자동차 통행 금지
                 else if (cityMap[row - 1][col - 1] == 1) {
+                    System.out.println("No Pass");
                     dp[row][col][0] = 0;
                     dp[row][col][1] = 0;
                 }
                 // 좌, 우회전 금지
                 else {
+                    System.out.println("No Turn");
                     dp[row][col][0] = dp[row - 1][col][0];
                     dp[row][col][1] = dp[row][col - 1][1];
                 }
 
-                print(dp);
+                PrintUtils.printArray3(dp);
             }
         }
 
-        return dp[m][m][0];
-    }
-
-    private static void print(int[][][] array3) {
-
-        for (int[][] array2 : array3) {
-            System.out.println(Arrays.deepToString(array2));
-        }
-
-        System.out.println("=====================\n");
-
+        return dp[m][n][0];
     }
 
     public static void main(String[] args) {
