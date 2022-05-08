@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'com.coding'
+sourceCompatibility = '1.8'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testCompileOnly 'junit:junit:4.12'
+}
+
+test {
+    useJUnitPlatform()
+}
