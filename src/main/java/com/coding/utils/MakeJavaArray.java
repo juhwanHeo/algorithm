@@ -10,7 +10,8 @@ public class MakeJavaArray {
     private static void replace(String str) {
         String[] split = str.replaceAll("\\[", "{")
                 .replaceAll("]", "}")
-                .replaceAll("}, ", "},#")
+                .trim()
+                .replaceAll("},", "},#")
                 .split("#");
 
         for (String s : split) {
