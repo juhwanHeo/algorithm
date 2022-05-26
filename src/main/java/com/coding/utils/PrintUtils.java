@@ -9,6 +9,11 @@ public class PrintUtils {
         System.out.println("=====================\n");
     }
 
+    public static void printArray1(boolean[] array1) {
+        System.out.println(Arrays.toString(array1));
+        System.out.println("=====================\n");
+    }
+
     public static void printArray1(long[] array1) {
         System.out.println(Arrays.toString(array1));
         System.out.println("=====================\n");
