@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Test5 {
 
-    static class Node {
+    private static class Node {
         Point data;
         Node root;
         Node left;

@@ -12,7 +12,7 @@ import java.util.PriorityQueue;
  */
 public class Delivery {
 
-    static class Node implements Comparable<Node>{
+    private static class Node implements Comparable<Node>{
         int end;
         int weight;
 

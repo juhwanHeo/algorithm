@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class ShortestRoute {
 
-    static class Node implements Comparable<Node> {
+    private static class Node implements Comparable<Node> {
 
         int end;
         int weight;

@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class NearShortestRoute {
 
-    static class Node implements Comparable<Node>{
+    private static class Node implements Comparable<Node>{
         int end;
         int weight;
 
