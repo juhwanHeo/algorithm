@@ -57,7 +57,7 @@ public class TreasureIsland {
 //                    map = new int[R][C];
                     System.out.println("point: " + row + ", " + col);
                     bfs(row, col);
-//                    PrintUtils.printArray2(map);
+//                    PrintUtils.printArray(map);
                 }
             }
         }

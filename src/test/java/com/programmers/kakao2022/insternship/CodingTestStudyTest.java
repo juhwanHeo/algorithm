@@ -35,5 +35,4 @@ class CodingTestStudyTest {
         assertEquals(expected, result);
     }
 
-
 }

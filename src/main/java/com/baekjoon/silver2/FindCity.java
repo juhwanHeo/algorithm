@@ -68,7 +68,7 @@ public class FindCity {
 
         dijkstra(X);
         System.out.println(adj);
-        PrintUtils.printArray1(dist);
+        PrintUtils.printArray(dist);
 
         List<Integer> list = new ArrayList<>();
         for (int i = 1; i < dist.length; i++) {

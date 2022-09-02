@@ -26,7 +26,7 @@ public class IntTriangle {
                     dp[i][k] = Math.max(dp[i - 1][k - 1], dp[i - 1][k]) + triangle[i][k];
                 }
 
-                PrintUtils.printArray2(dp);
+                PrintUtils.printArray(dp);
             }
         }
 

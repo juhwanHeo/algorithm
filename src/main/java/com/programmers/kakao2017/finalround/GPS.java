@@ -21,7 +21,7 @@ public class GPS {
         for (int[] array : dp) Arrays.fill(array, INF);
 
         dp[0][gps_log[0]] = 0;
-        PrintUtils.printArray2(dp);
+        PrintUtils.printArray(dp);
 
         for (int i = 1; i < k; i++) {
             for (int j = 1; j < n + 1; j++) {
@@ -33,7 +33,7 @@ public class GPS {
                 }
 
                 dp[i][j] += (gps_log[i] == j) ? 0 : 1;
-                PrintUtils.printArray2(dp);
+                PrintUtils.printArray(dp);
             }
         }
         return dp[k - 1][gps_log[k - 1]] >= INF ? -1 : dp[k - 1][gps_log[k - 1]];

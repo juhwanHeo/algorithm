@@ -65,7 +65,7 @@ public class FindArea {
             }
         }
 
-        PrintUtils.printArray2(map);
+        PrintUtils.printArray(map);
         Collections.sort(areaList);
         StringBuilder sb = new StringBuilder();
         sb.append(areaList.size()).append("\n");

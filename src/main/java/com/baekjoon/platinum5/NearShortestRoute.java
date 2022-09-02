@@ -155,7 +155,7 @@ public class NearShortestRoute {
 //
 //        System.out.println("sb = " + sb);
 //        System.out.println("dist[D] = " + dist[D]);
-//        PrintUtils.printArray1(dist);
+//        PrintUtils.printArray(dist);
 //        return dist[D];
 //    }
 //

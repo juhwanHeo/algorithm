@@ -38,7 +38,7 @@ public class PedestrianParadise {
                     dp[row][col][1] = dp[row][col - 1][1];
                 }
 
-                PrintUtils.printArray3(dp);
+                PrintUtils.printArray(dp);
             }
         }
 

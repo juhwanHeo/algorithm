@@ -48,7 +48,7 @@ public class MazeSearch {
 
         bfs(0, 0);
 
-        PrintUtils.printArray2(map);
+        PrintUtils.printArray(map);
         System.out.println(map[N - 1][M - 1]);
     }
 

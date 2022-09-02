@@ -38,7 +38,7 @@ public class RecurrenceRelation {
         }
 
         System.out.println(dp[n]);
-        PrintUtils.printArray1(dp);
+        PrintUtils.printArray(dp);
     }
 }
 

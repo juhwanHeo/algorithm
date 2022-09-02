@@ -29,7 +29,7 @@ public class NthLargestNumber {
 
             Arrays.sort(arr);
 
-//            PrintUtils.printArray1(arr);
+//            PrintUtils.printArray(arr);
 //            System.out.println(arr[arr.length - 3]);
             list.add(arr[arr.length - 3]);
         }

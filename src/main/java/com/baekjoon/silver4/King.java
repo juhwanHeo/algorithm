@@ -41,7 +41,7 @@ public class King {
         for (int i = 0; i < N; i++) {
 
             // map 출력문
-            PrintUtils.printArray2(map);
+            PrintUtils.printArray(map);
             String cmd = br.readLine();
             move(cmd);
         }

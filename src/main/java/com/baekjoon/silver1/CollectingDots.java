@@ -39,8 +39,8 @@ public class CollectingDots {
         int yMid = yArr[M / 2];
         int answer = 0;
 
-        PrintUtils.printArray1(xArr);
-        PrintUtils.printArray1(yArr);
+        PrintUtils.printArray(xArr);
+        PrintUtils.printArray(yArr);
         for (int i = 0; i < M; i++) {
             answer += Math.abs(xMid - xArr[i]) + Math.abs(yMid - yArr[i]);
             System.out.println(answer);

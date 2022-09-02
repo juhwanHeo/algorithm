@@ -24,13 +24,13 @@ public class Rank {
         }
 
         System.out.println("before");
-        PrintUtils.printArray2(map);
+        PrintUtils.printArray(map);
         for (int i = 0; i < map.length; i++) {
             update(i);
         }
 
         System.out.println("after");
-        PrintUtils.printArray2(map);
+        PrintUtils.printArray(map);
 
         for (int[] row : map) {
             long zero = Arrays.stream(row)

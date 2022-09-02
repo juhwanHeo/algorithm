@@ -65,7 +65,7 @@ public class Shortcut {
 
         dijkstra(0);
         System.out.println(adj);
-        PrintUtils.printArray1(dist);
+        PrintUtils.printArray(dist);
         System.out.println(dist[D]);
     }
 

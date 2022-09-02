@@ -42,7 +42,7 @@ public class PascalTriangle {
         }
 
 
-        PrintUtils.printArray2(dp);
+        PrintUtils.printArray(dp);
         System.out.println(sum);
 
     }

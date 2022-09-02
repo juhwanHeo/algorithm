@@ -35,7 +35,7 @@ public class Virus {
         }
 
         System.out.println(adj);
-        PrintUtils.printArray1(visited);
+        PrintUtils.printArray(visited);
         System.out.println((bfs(1) - 1));
     }
 
