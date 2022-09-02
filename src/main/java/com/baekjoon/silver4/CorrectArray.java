@@ -23,7 +23,7 @@ public class CorrectArray {
         for (int i = 0; i < N; i++) array[i] = Integer.parseInt(br.readLine());
 
         Arrays.sort(array);
-        PrintUtils.printArray1(array);
+        PrintUtils.printArray(array);
 
         int left = 0, max = 0, right = 1;
         int cnt = 1;

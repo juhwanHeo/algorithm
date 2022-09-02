@@ -13,7 +13,7 @@ class DFS_JUWON {
 
     static boolean isChild = false;
 
-    static class Node {
+    private static class Node {
         Integer id;
         Integer up_id;
         List<Node> child;

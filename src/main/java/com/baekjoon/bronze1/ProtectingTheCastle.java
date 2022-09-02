@@ -52,7 +52,7 @@ public class ProtectingTheCastle {
             }
         }
 
-        PrintUtils.printArray2(map);
+        PrintUtils.printArray(map);
 
         System.out.println(Math.max(rowCnt, colCnt));
     }

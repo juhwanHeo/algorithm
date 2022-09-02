@@ -16,7 +16,7 @@ public class WayToSchool {
 
         for (int[] puddle : puddles) way[puddle[1] - 1][puddle[0] - 1] = 1;
 
-        PrintUtils.printArray2(way);
+        PrintUtils.printArray(way);
 
         dp[1][1] = 1;
         for (int row = 1; row <= n; row++) {
@@ -30,7 +30,7 @@ public class WayToSchool {
                     System.out.println("Pass");
                     dp[row][col] += (dp[row - 1][col] + dp[row][col - 1]) % MOD;
                 }
-                PrintUtils.printArray2(dp);
+                PrintUtils.printArray(dp);
             }
         }
 

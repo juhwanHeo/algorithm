@@ -3,25 +3,47 @@ package com.study.test;
 import java.util.Optional;
 
 /*
-* Optional class Study
-* */
+ * Optional class Study
+ * */
 public class Test1 {
     public static void main(String[] args) {
-        Home home = new Home();
-        home.setAddress(null);
-        String address = Optional.of(home)
-                            .map(Home::getAddress)
-                            .orElse("Default");
-        Home home2 = new Home();
+//        Home home = new Home();
+//        home.setAddress(null);
+//        String address = Optional.of(home)
+//                            .map(Home::getAddress)
+//                            .orElse("Default");
+//        Home home2 = new Home();
 
 //        Optional.ofNullable(home2)
 //                .flatMap()
 //                .get();
 
-        System.out.println("address: " + address);
+//        System.out.println("address: " + address);
+
+        ClassC clazz = new ClassC();
+        clazz.f();
 
     }
 }
+
+class ClassA {
+    protected void func() {
+        System.out.println(1);
+    }
+}
+
+class ClassB extends ClassA {
+    public void func() {
+        System.out.println(2);
+    }
+}
+
+class ClassC extends ClassB {
+    public void f() {
+        func();
+    }
+}
+
 
 class Person {
     private String name;
