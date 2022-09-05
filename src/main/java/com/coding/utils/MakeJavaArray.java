@@ -9,19 +9,6 @@ import java.util.Scanner;
  * */
 public class MakeJavaArray {
 
-    private static String replace(String str) {
-        String[] split = str.replaceAll("\\[", "{")
-                .replaceAll("]", "}")
-                .trim()
-                .replaceAll("},", "},#")
-                .split("#");
-        StringBuilder sb = new StringBuilder();
-        for (String s : split) sb.append(s).append('\n');
-
-        return sb.toString();
-    }
-
-
     /*
      * programmers Array converter </br>
      * @params string
@@ -43,9 +30,9 @@ public class MakeJavaArray {
      * @params string
      * @return int[][]
      * */
-    public static int[][] replaceIntArray2(String str) {
+    public static int[][] replaceIntArray2(String arrayString) {
         List<List<Integer>> lists = new ArrayList<>();
-        String[] split = str.split("\\[");
+        String[] split = arrayString.split("\\[");
 
         for (String s : split) {
             String[] numbers = s.replaceAll("[^0-9\\s\\n]", "").split(" ");
@@ -60,6 +47,23 @@ public class MakeJavaArray {
 
         System.out.println("---- replaceIntArray2 ----\n");
         return convertToArray(lists);
+    }
+
+    public static int[][] replaceIntArray2(String status, String arrayString) {
+        System.out.println("\n---- " + status + " ----");
+        return replaceIntArray2(arrayString);
+    }
+
+    private static String replace(String str) {
+        String[] split = str.replaceAll("\\[", "{")
+                .replaceAll("]", "}")
+                .trim()
+                .replaceAll("},", "},#")
+                .split("#");
+        StringBuilder sb = new StringBuilder();
+        for (String s : split) sb.append(s).append('\n');
+
+        return sb.toString();
     }
 
     private static int[][] convertToArray(List<List<Integer>> lists) {
