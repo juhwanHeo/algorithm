@@ -32,7 +32,7 @@ public class MakeJavaArray {
      * */
     public static int[][] replaceIntArray2(String arrayString) {
         List<List<Integer>> lists = new ArrayList<>();
-        String[] split = arrayString.split("\\[");
+        String[] split = arrayString.trim().split("\\[");
 
         for (String s : split) {
             String[] numbers = s.replaceAll("[^0-9\\s\\n]", "").split(" ");

@@ -14,5 +14,4 @@ class Test1Test {
         System.out.println("result = " + result);
         assertEquals(expected, result);
     }
-
 }
