@@ -8,9 +8,15 @@ class Test6Test {
 
     @Test
     public void solution1() {
-        int n = 6;
-        int expected = 0;
-        int result = Test6.solution();
+        int n = 3;
+        int m = 4;
+        int x = 2;
+        int y = 3;
+        int r = 3;
+        int c = 1;
+        int k = 5;
+        String expected = "dllrl";
+        String result = Test6.solution(n, m, x, y, r, c, k);
         System.out.println("result = " + result);
         assertEquals(expected, result);
     }
