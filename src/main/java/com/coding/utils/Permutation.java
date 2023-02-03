@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Permutation {
 
-
     private static int[] print(int[] arr, int r) {
         int[] reulst = new int[r];
         for (int i = 0; i < r; i++) reulst[i] = arr[i];
