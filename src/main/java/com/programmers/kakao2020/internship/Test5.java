@@ -20,12 +20,13 @@ public class Test5 {
     static List<Integer>[] directAdjList;
     static boolean[] visited;
     static boolean[] finished;
-    static boolean answer = true;
+    static boolean answer;
 
-    public boolean solution(int n, int[][] path, int[][] order) {
+    public static boolean solution(int n, int[][] path, int[][] order) {
         adjList = new List[n];
         directAdjList = new List[n];
         finished = new boolean[n];
+        answer = true;
 
         for (int i = 0; i < n ; i++) {
             adjList[i] = new ArrayList<>();
@@ -42,6 +43,8 @@ public class Test5 {
 
         // dfs로 단방향 그래프 생성
         dfs(n);
+
+        System.out.println("directAdjList: " + Arrays.deepToString(directAdjList));
         for (int[] o : order) {
             int start = o[0];
             int end = o[1];
@@ -62,7 +65,25 @@ public class Test5 {
         return answer;
     }
 
-    void checkCycle(int here) {
+    static void dfs(int n){
+        visited = new boolean[n];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
+        while(!stack.isEmpty()) {
+            int current = stack.pop();
+            visited[current] = true;
+
+            for (int i = 0; i < adjList[current].size(); i++) {
+                int next = adjList[current].get(i);
+                if (!visited[next]) {
+                    directAdjList[next].add(current);
+                    stack.push(next);
+                }
+            }
+        }
+    }
+
+    static void checkCycle(int here) {
         if(!answer) return;
         visited[here] = true;
         for (int i = 0; i < directAdjList[here].size(); i++) {
@@ -75,65 +96,6 @@ public class Test5 {
             }
         }
         finished[here] = true;
-    }
-
-    /*
-    * 재귀 dfs 사용시 효율성테스트 탈락
-    * stack을 사용한 dfs로 변경
-    * dfs(0, -1);
-    */
-//    void dfs(int here, int before){
-//        for (int i = 0; i < adjList[here].size(); i++) {
-//            int there = adjList[here].get(i);
-//            if(there == before) continue;
-//
-//            directAdjList[there].add(here);
-//            dfs(there, here);
-//        }
-//    }
-
-    void dfs(int n){
-        visited = new boolean[n];
-        Stack<Integer> stack = new Stack<>();
-        stack.push(0);
-        while(!stack.isEmpty()) {
-            int val = stack.pop();
-            if(visited[val]) continue;
-            else {
-                visited[val] = true;
-                for (int i = 0; i < adjList[val].size(); i++) {
-                    int there = adjList[val].get(i);
-                    if (!visited[there]) {
-                        directAdjList[there].add(val);
-                        stack.push(there);
-                    }
-                }
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-
-        int[][] path1 = {{0,1},{0,3},{0,7},{8,1},{3,6},{1,2},{4,7},{7,5}};
-        int[][] order1 = {{8,5}, {6,7}, {4,1}};
-        boolean answer1 = new Test5().solution(9, path1, order1);
-
-        int[][] path2 = {{8,1},{0,1},{1,2},{0,7},{4,7},{0,3},{7,5},{3,6}};
-        int[][] order2 = {{4,1},{5,2}};
-        boolean answer2 = new Test5().solution(9, path2, order2);
-
-        int[][] path3 = {{0,1},{0,3},{0,7},{8,1},{3,6},{1,2},{4,7},{7,5}};
-        int[][] order3 = {{4,1},{8,7},{6,5}};
-        boolean answer3 = new Test5().solution(9, path3, order3);
-
-        System.out.println("answer1: " + answer1);
-        System.out.println("res1: " + true);
-
-        System.out.println("answer2: " + answer2);
-        System.out.println("res2: " + true);
-
-        System.out.println("answer3: " + answer3);
-        System.out.println("res3: " + false);
     }
 }
 
