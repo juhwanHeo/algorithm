@@ -23,13 +23,4 @@ public class AnticipatedMatch {
         // (a-1) XOR (b-1)값을 이진수 문자열로 변환한 길이를 세는 거니까. 예를들어 3과 7이면 11 XOR 111이고 값은 100이 되니까 문자열 길이가 바로 3라운드
         // return Integer.toBinaryString((a-1)^(b-1)).length();
     }
-
-
-    public static void main(String[] args) {
-        int N = 8;
-        int A = 4;
-        int B = 7;
-
-        System.out.println(solution(N, A, B));
-    }
 }

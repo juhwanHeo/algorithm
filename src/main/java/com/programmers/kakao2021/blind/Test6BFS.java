@@ -133,7 +133,6 @@ public class Test6BFS {
     private static int bfs(Card start, Card end) {
         Queue<Card> queue = new LinkedList<>();
         int cost = 0;
-        int[][] routes = new int[4][4];
         boolean[][] visited = new boolean[4][4];
 
         queue.add(start);
@@ -143,20 +142,20 @@ public class Test6BFS {
             /* enter !!*/
             if (current.row == end.row && current.col == end.col) {
                 cost = current.cost;
-                routes[current.row][current.col] = current.cost;
                 break;
             }
 
+            /* 한칸 이동 */
             for (int[] dir : dirs) {
                 int nRow = current.row + dir[0];
                 int nCol = current.col + dir[1];
                 if (canMove(nRow, nCol, visited)) {
-                    routes[nRow][nCol] = current.cost + 1;
                     visited[current.row][current.col] = true;
                     queue.offer(new Card(nRow, nCol, current.cost + 1));
                 }
             }
 
+            /* 여러칸 이동 */
             for (int[] dir : dirs) {
                 int nRow = current.row;
                 int nCol = current.col;
@@ -168,7 +167,6 @@ public class Test6BFS {
                 }
 
                 if (canMove(nRow, nCol, visited)) {
-                    routes[nRow][nCol] = current.cost + 1;
                     visited[current.row][current.col] = true;
                     queue.offer(new Card(nRow, nCol, current.cost + 1));
                 }
