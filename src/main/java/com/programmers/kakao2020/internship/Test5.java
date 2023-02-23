@@ -1,13 +1,10 @@
 package com.programmers.kakao2020.internship;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 /*
-*
-* 효율성 테스트 9, 10 해결 x
-*/
+ *
+ * 효율성 테스트 9, 10 해결 x
+ */
 
 /*
  * @2020 kakao internship
@@ -23,12 +20,11 @@ public class Test5 {
     static boolean answer;
 
     public static boolean solution(int n, int[][] path, int[][] order) {
-        adjList = new List[n];
-        directAdjList = new List[n];
-        finished = new boolean[n];
+        adjList = new List[n + 1];
+        directAdjList = new List[n + 1];
         answer = true;
 
-        for (int i = 0; i < n ; i++) {
+        for (int i = 0; i <= n; i++) {
             adjList[i] = new ArrayList<>();
             directAdjList[i] = new ArrayList<>();
         }
@@ -48,54 +44,77 @@ public class Test5 {
         for (int[] o : order) {
             int start = o[0];
             int end = o[1];
-            directAdjList[end].add(start);
+            directAdjList[start].add(end);
         }
 
-        visited = new boolean[n];
-        for (int i = 0; i < n; i++) {
-            if(!answer) break;
-            if(!visited[i]) checkCycle(i);
-        }
+        finished = new boolean[n + 1];
+        visited = new boolean[n + 1];
+//        for (int i = 0; i < n; i++) {
+//            if (!answer) break;
+//            if (!visited[i]) checkCycle(i);
+//        }
 
         System.out.println("adjList: " + Arrays.deepToString(adjList));
         System.out.println("directAdjList: " + Arrays.deepToString(directAdjList));
         System.out.println("visited: " + Arrays.toString(visited));
         System.out.println("finished: " + Arrays.toString(finished));
         System.out.println();
-        return answer;
+        return !checkCycle();
     }
 
-    static void dfs(int n){
+    static void dfs(int n) {
         visited = new boolean[n];
         Stack<Integer> stack = new Stack<>();
         stack.push(0);
-        while(!stack.isEmpty()) {
+        visited[0] = true;
+        while (!stack.isEmpty()) {
             int current = stack.pop();
-            visited[current] = true;
-
-            for (int i = 0; i < adjList[current].size(); i++) {
-                int next = adjList[current].get(i);
+            for (int next : adjList[current]) {
                 if (!visited[next]) {
-                    directAdjList[next].add(current);
+                    visited[next] = true;
+                    directAdjList[current].add(next);
                     stack.push(next);
                 }
             }
         }
     }
 
-    static void checkCycle(int here) {
-        if(!answer) return;
-        visited[here] = true;
-        for (int i = 0; i < directAdjList[here].size(); i++) {
-            int there = directAdjList[here].get(i);
+    static boolean checkCycle() {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
 
-            if (!visited[there]) checkCycle(there);
-            else if (!finished[there]) {
-                answer = false;
-                return;
+        while (!stack.isEmpty()) {
+            int current = stack.peek();
+
+            if (!visited[current]) {
+                visited[current] = true;
+                finished[current] = true;
+            } else {
+                finished[current] = false;
+                stack.pop();
+            }
+
+            for (int next : directAdjList[current]) {
+                if (!visited[next]) stack.push(next);
+                else if (finished[next]) {
+                    return true;
+                }
             }
         }
-        finished[here] = true;
+        return false;
+    }
+
+
+    static void checkCycle(int current) {
+        if (!answer) return;
+        visited[current] = true;
+
+        for (int next : directAdjList[current]) {
+            if (!visited[next]) checkCycle(next);
+            else if (!finished[next]) answer = false;
+        }
+
+        finished[current] = true;
     }
 }
 
