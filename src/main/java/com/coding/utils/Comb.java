@@ -49,11 +49,9 @@ public class Comb {
     public static int[] answer;
     public static int cnt = 0;
     private static void print(int[] output) {
-
         for (int i : output) {
             System.out.print(i + "");
         }
         System.out.println();
-
     }
 }

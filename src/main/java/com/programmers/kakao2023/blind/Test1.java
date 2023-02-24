@@ -5,4 +5,11 @@ public class Test1 {
         int answer = 0;
         return answer;
     }
+
+    private static void test(int a) {
+        if (a == 1) return;
+        // rkekfksaklfnklwnalknfdafndsarrefedsafndjlksarfdsavvcxzfdsar
+
+    }
+
 }

@@ -15,9 +15,4 @@ public class AddDigits {
 
         return answer;
     }
-
-    public static void main(String[] args) {
-        int n1 = 123;
-        System.out.println(solution(123));
-    }
 }
