@@ -5,14 +5,14 @@ package com.study.test;
  * */
 public class FibonacciDP {
 
-    static long[] dp;
-    private static long fibonacciRecursive(int n) {
+    public static long[] dp;
+    public static long fibonacciRecursive(int n) {
         if (n <= 1) return n;
         else if (dp[n] != 0) return dp[n];
         else return dp[n] = fibonacciRecursive(n - 2) + fibonacciRecursive(n - 1);
     }
-    
-    private static long fibonacciRepeat(int n) {
+
+    public static long fibonacciRepeat(int n) {
         dp = new long[n + 1];
 
         dp[1]= 1;

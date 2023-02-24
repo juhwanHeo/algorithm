@@ -13,8 +13,8 @@ public class MagicalElevator {
     public static int solution(int storey) {
         answer = Integer.MAX_VALUE;
 
-//        dfs(storey, 0);
-        dfs(storey, 0 , 1);
+        dfs(storey, 0);
+//        dfs(storey, 0 , 1);
         return answer;
     }
 
