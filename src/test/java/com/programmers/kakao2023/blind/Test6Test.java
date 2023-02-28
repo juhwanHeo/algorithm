@@ -51,4 +51,35 @@ class Test6Test {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void solution4() {
+        int n = 6;
+        int m = 6;
+        int x = 2;
+        int y = 6;
+        int r = 6;
+        int c = 5;
+        int k = 11;
+        String expected = "ddddllllrrr";
+        String result = Test6.solution(n, m, x, y, r, c, k);
+        System.out.println("result = " + result);
+        assertEquals(expected, result);
+    }
+
+
+    @Test
+    public void solution5() {
+        int n = 3;
+        int m = 4;
+        int x = 1;
+        int y = 3;
+        int r = 3;
+        int c = 4;
+        int k = 5;
+        String expected = "ddlrr";
+        String result = Test6.solution(n, m, x, y, r, c, k);
+        System.out.println("result = " + result);
+        assertEquals(expected, result);
+    }
+
 }
