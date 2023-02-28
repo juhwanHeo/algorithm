@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * @2022 KAKAO BLIND RECRUITM합NT
+ * @2022 KAKAO BLIND RECRUITMENT
  * @TestName: 양궁 대회
  * @URL: https://programmers.co.kr/learn/courses/30/lessons/92342
  */
