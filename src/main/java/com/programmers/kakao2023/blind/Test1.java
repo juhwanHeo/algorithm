@@ -13,7 +13,7 @@ public class Test1 {
         List<Integer> list = new ArrayList<>();
         Map<String, Integer> map = new HashMap<>();
 
-        int todayValue = getMonth(today);
+        int todayValue = getDay(today);
         for (String term : terms) {
             String[] split = term.split(" ");
             map.put(split[0], Integer.parseInt(split[1]));
@@ -24,7 +24,7 @@ public class Test1 {
             String[] split = privacy.split(" ");
             String date = split[0];
             String type = split[1];
-            int termDay = getMonth(date);
+            int termDay = getDay(date);
             int diff = (todayValue - termDay) / 28;
             if (map.get(type) <= diff) list.add(index);
 
@@ -37,7 +37,7 @@ public class Test1 {
                 .toArray();
     }
 
-    private static int getMonth(String date) {
+    private static int getDay(String date) {
         String[] split = date.split("\\.");
         int year = Integer.parseInt(split[0]) * 12 * 28;
         int month = Integer.parseInt(split[1]) * 28;
