@@ -1,5 +1,10 @@
 package com.programmers.kakao2023.blind;
 
+/*
+ * @2023 KAKAO BLIND RECRUITMENT
+ * @TestName: 미로 탈출 명령어
+ * @URL: https://programmers.co.kr/learn/courses/30/lessons/150365
+ */
 public class Test6 {
 
     // a b c d e f g h i j
@@ -20,19 +25,25 @@ public class Test6 {
         // x, y : start
         // r, c : end
 
+        // TC 31
+        int distance = distance(x, y, endRow, endCol);
+        if (distance > k || (k - distance) % 2 == 1) return "impossible";
         dfs(x, y, 0, k);
 
         return result != null ? result : "impossible";
     }
 
+    static int distance(int x, int y, int r, int c) {
+        return Math.abs(x - r) + Math.abs(y - c);
+    }
+
     static void dfs(int row, int col, int depth, int limit) {
-//        if (depth + distance(row, col, endRow, endCol) > limit) return;
         if (result != null) return;
+        if (depth + distance(row, col, endRow, endCol) > limit) return;
         if (limit == depth) {
             if (row == endRow && col == endCol) result = answer.toString();
             return;
         }
-
         for (int i = 0; i < dirs.length; i++) {
             int nRow = row + dirs[i][0];
             int nCol = col + dirs[i][1];
@@ -42,10 +53,6 @@ public class Test6 {
                 answer.delete(depth, depth + 1);
             }
         }
-    }
-
-    static int distance(int x, int y, int r, int c) {
-        return Math.abs(x - r) + Math.abs(y - c);
     }
 
     static class Direction {
