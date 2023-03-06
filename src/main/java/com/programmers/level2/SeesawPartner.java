@@ -1,69 +1,43 @@
 package com.programmers.level2;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /*
  * @level2
  * @TestName: 시소 짝궁
  * @URL: https://programmers.co.kr/learn/courses/30/lessons/152996
- * @ 이분탐색
  */
 public class SeesawPartner {
 
-    private static final int[][] rates = {{1, 1}, {3, 2}, {4, 2}, {4, 3}};
 
+    static Map<Double, Integer> map;
     public static long solution(int[] weights) {
         long answer = 0;
+        map = new HashMap<>();
         Arrays.sort(weights);
 
-        // 비율 만큼 반복
-        for (int[] rate : rates) {
-            for (int i = 0; i < weights.length; i++) {
-                int x = weights[i];
-
-                // 비율 계산을 통해 y를 구함
-                if (x * rate[0] % rate[1] != 0) continue;
-                int y = ((x * rate[0]) / rate[1]);
-                // y의 값이 i+1 부터 존재하는지 확인함
-                int upper = upperBound(weights, y, i + 1, weights.length);
-
-                // 하한 탐색은 상한 탐색의 위치 이하이므로 탐색 마지막 위치를 upper 해도 됨
-                int lower = lowerBound(weights, y, i + 1, upper);
-
-                System.out.println("y: " + y + ", upper: " + upper + ", lower: " +lower);
-                // 상한과 하한의 값을 빼서 중복된 값이 몇 개 인지 정답에 더함
-                // 만약 y의 값이 범위 내에 존재하지 않으면,
-                // 상한과 하한 둘 다 i+1의 위치를 반환하기 때문에 둘의 차이는 0이 될 것임
-                answer += (upper - lower);
-            }
+        for (int weight : weights) {
+            answer += helper(weight);
+            System.out.println(answer + ", " + map);
         }
-
 
         return answer;
     }
 
+    static long helper(int weight) {
+        long result = 0;
 
-    // 상한
-    private static int upperBound(int[] weights, int findWeight, int left, int right) {
-        while (left < right) {
-            int mid = (left + right) / 2;
+        double d1 = weight * 1.0;
+        double d2 = (weight * 2.0) / 3.0;
+        double d3 = (weight * 1.0) / 2.0;
+        double d4 = (weight * 3.0) / 4.0;
 
-            if (findWeight < weights[mid]) right = mid;
-            else left = mid + 1;
-        }
-        return left;
-    }
+        result += map.getOrDefault(d1, 0);
+        result += map.getOrDefault(d2, 0);
+        result += map.getOrDefault(d3, 0);
+        result += map.getOrDefault(d4, 0);
 
-    // 하한
-    private static int lowerBound(int[] weights, int findWeight, int left, int right) {
-        while (left < right) {
-            int mid = (left + right) / 2;
-
-            if (findWeight <= weights[mid]) right = mid;
-            else left = mid + 1;
-        }
-        return left;
+        map.put(d1, map.getOrDefault(d1, 0) + 1);
+        return result;
     }
 }
