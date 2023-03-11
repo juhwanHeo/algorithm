@@ -2,7 +2,6 @@ package com.programmers.kakao2020.blind;
 
 import com.coding.utils.PrintUtils;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -10,30 +9,37 @@ import java.util.Queue;
  * @2020 kakao blind
  * @TestName: 블록 이동하기
  * @URL: https://programmers.co.kr/learn/courses/30/lessons/60063
+ * @COMMENT: 10, 14 TC 틀림
  */
 public class MovingBlocks {
     static class Point {
         int lRow, lCol, rRow, rCol, cost;
         char status;
 
-        public Point(int lRow, int lCol, int rRow, int rCol, int cost) {
+        public Point(int lRow, int lCol, int rRow, int rCol, int cost, char status) {
             this.lRow = lRow;
             this.lCol = lCol;
             this.rRow = rRow;
             this.rCol = rCol;
             this.cost = cost;
+            this.status = status;
         }
 
         @Override
         public String toString() {
-            return "(" + lRow + ", " + lCol + ", " + rRow + ", " + rCol + ", " + cost + ")";
+            return "(" + lRow + ", " + lCol + ", " + rRow + ", " + rCol + ", " + cost + ", " + status + ")";
         }
     }
 
     static int[][] dirs = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
     // lRow, lCol, rRow, rCol
-    static int[][] rotates = {{0, 0, 1, -1}, {0, 0, -1, -1}, {-1, 1, 0, 0}, {1, 1, 0, 0}};
-    static int[][] vRotates = {{0, 0, 1, -1}, {0, 0, -1, -1}, {-1, 1, 0, 0}, {1, 1, 0, 0}};
+
+    // horizontal
+    static int[][] hRotates = {{-1, 0, -1, 0}, {1, 0, 1, 0}};
+    // vertical
+    static int[][] vRotates = {{0, -1, 0, -1}, {0, 1, 0, 1}};
+
+
     public static int solution(int[][] board) {
 //        int answer = 0;
         return bfs(board);
@@ -46,51 +52,90 @@ public class MovingBlocks {
         Queue<Point> queue = new LinkedList<>();
 
         boolean[][] visited = new boolean[board.length][board[0].length];
-        int[][] map = new int[board.length][board[0].length];
+        boolean[][] rotated = new boolean[board.length][board[0].length];
         visited[0][0] = true;
         visited[0][1] = true;
-        queue.offer(new Point(0, 0, 0, 1, 0));
+//        rotated[0][0] = true;
+//        rotated[0][1] = true;
+        queue.offer(new Point(0, 0, 0, 1, 0, 'h'));
         while (!queue.isEmpty()) {
-            System.out.println(queue);
             Point current = queue.poll();
-            
-            if (current.lRow == board.length - 1 && current.lCol == board[0].length - 1
-                    ||current.rRow == board.length - 1 && current.rCol == board[0].length - 1) {
-                cost = current.cost;
-                break;
-            }
 
             for (int[] dir : dirs) {
                 int nlRow = current.lRow + dir[0];
                 int nlCol = current.lCol + dir[1];
                 int nrRow = current.rRow + dir[0];
                 int nrCol = current.rCol + dir[1];
-                Point next = new Point(nlRow, nlCol, nrRow, nrCol, current.cost + 1);
+                Point next = new Point(nlRow, nlCol, nrRow, nrCol, current.cost + 1, current.status);
 
                 if (canMove(next, board, visited)) {
                     queue.offer(next);
                     visited[nlRow][nlCol] = true;
                     visited[nrRow][nrCol] = true;
+
+                    if (next.lRow == board.length - 1 && next.lCol == board[0].length - 1
+                            ||next.rRow == board.length - 1 && next.rCol == board[0].length - 1) {
+                        cost = next.cost;
+                        return cost;
+                    }
                 }
             }
 
-            for (int[] rotate : rotates) {
-                int nlRow = current.lRow + rotate[0];
-                int nlCol = current.lCol + rotate[1];
-                int nrRow = current.rRow + rotate[2];
-                int nrCol = current.rCol + rotate[3];
-                Point next = new Point(nlRow, nlCol, nrRow, nrCol, current.cost + 1);
-                if (canRotate(rotate, next, board, visited)) {
-                    queue.offer(new Point(nlRow, nlCol, nrRow, nrCol, current.cost + 1));
-                    visited[nlRow][nlCol] = true;
-                    visited[nrRow][nrCol] = true;
+            if (rotated[current.lRow][current.lCol] && rotated[current.rRow][current.rCol]) continue;
+            if (current.status == 'h') {
+                for (int[] rotate : hRotates) {
+                    int nlRow = current.lRow + rotate[0];
+                    int nlCol = current.lCol + rotate[1];
+                    int nrRow = current.rRow + rotate[2];
+                    int nrCol = current.rCol + rotate[3];
+                    Point next = new Point(nlRow, nlCol, nrRow, nrCol, current.cost + 1, current.status);
+                    if (canRotate(next, board)) {
+                        queue.offer(new Point(current.lRow, current.lCol, nlRow, nlCol, current.cost + 1, 'v'));
+                        queue.offer(new Point(nrRow, nrCol, current.rRow, current.rCol, current.cost + 1, 'v'));
+                        visited[nlRow][nlCol] = true;
+                        visited[nrRow][nrCol] = true;
+                        rotated[current.lRow][current.lCol] = true;
+                        rotated[current.rRow][current.rCol] = true;
+
+                        if (next.lRow == board.length - 1 && next.lCol == board[0].length - 1
+                                ||next.rRow == board.length - 1 && next.rCol == board[0].length - 1) {
+                            cost = next.cost;
+                            return cost;
+                        }
+                    }
+                }
+            }
+
+            else {
+                for (int[] rotate : vRotates) {
+                    int nlRow = current.lRow + rotate[0];
+                    int nlCol = current.lCol + rotate[1];
+                    int nrRow = current.rRow + rotate[2];
+                    int nrCol = current.rCol + rotate[3];
+                    Point next = new Point(nlRow, nlCol, nrRow, nrCol, current.cost + 1, current.status);
+                    if (canRotate(next, board)) {
+                        queue.offer(new Point(current.lRow, current.lCol, nlRow, nlCol, current.cost + 1, 'h'));
+                        queue.offer(new Point(nrRow, nrCol, current.rRow, current.rCol, current.cost + 1, 'h'));
+                        visited[nlRow][nlCol] = true;
+                        visited[nrRow][nrCol] = true;
+                        rotated[current.lRow][current.lCol] = true;
+                        rotated[current.rRow][current.rCol] = true;
+
+                        if (next.lRow == board.length - 1 && next.lCol == board[0].length - 1
+                                ||next.rRow == board.length - 1 && next.rCol == board[0].length - 1) {
+                            cost = next.cost;
+                            return cost;
+                        }
+
+                    }
                 }
             }
 
         }
 
-        System.out.println();
-        PrintUtils.printArray(visited);
+//        System.out.println();
+//        PrintUtils.printArray(visited);
+//        PrintUtils.printArray(rotated);
         return cost;
     }
 
@@ -113,16 +158,10 @@ public class MovingBlocks {
     /*
     * 회전하는 가능 여부
     * */
-    static boolean canRotate(int[] rotate, Point moved, int[][] map, boolean[][] visited) {
-        if (rotate[0] == 0) {
-
-        }
-        else if (rotate[2] == 0) {
-
-        }
+    static boolean canRotate(Point moved, int[][] map) {
         return isOk(moved, map)
-                // 이동할 Point 가 0인지 체크
-                && map[moved.lRow][moved.lCol] == 0 && map[moved.rRow][moved.rCol] == 0
+                && map[moved.lRow][moved.lCol] == 0
+                && map[moved.rRow][moved.rCol] == 0
                 ;
     }
 
