@@ -26,4 +26,13 @@ class MovingBlocksTest {
         System.out.println("result = " + result);
         assertEquals(expected, result);
     }
+
+    @Test
+    void solution3() {
+        int[][] board = MakeJavaArray.replaceIntArray2("[[0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1, 1, 0, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]");
+        int expected = 18;
+        int result = MovingBlocks.solution(board);
+        System.out.println("result = " + result);
+        assertEquals(expected, result);
+    }
 }

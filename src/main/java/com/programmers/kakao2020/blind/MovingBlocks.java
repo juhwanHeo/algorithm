@@ -39,27 +39,28 @@ public class MovingBlocks {
     // vertical
     static int[][] vRotates = {{0, -1, 0, -1}, {0, 1, 0, 1}};
 
-
     public static int solution(int[][] board) {
-//        int answer = 0;
         return bfs(board);
     }
 
-    // L(1, 2), R(1, 3) -> L(2, 3)
-    // L(5, 3), R(4, 3) -> R(5, 4) C(4,4)
     static int bfs(int[][] board) {
         int cost = 0;
         Queue<Point> queue = new LinkedList<>();
 
-        boolean[][] visited = new boolean[board.length][board[0].length];
+        // visited[horizontal: 0 | vertical: 1][row][col]
+        boolean[][][] visited = new boolean[2][board.length][board[0].length];
         boolean[][] rotated = new boolean[board.length][board[0].length];
-        visited[0][0] = true;
-        visited[0][1] = true;
-//        rotated[0][0] = true;
-//        rotated[0][1] = true;
+        visited[0][0][0] = true;
+        visited[0][1][0] = true;
         queue.offer(new Point(0, 0, 0, 1, 0, 'h'));
         while (!queue.isEmpty()) {
             Point current = queue.poll();
+
+            if (current.lRow == board.length - 1 && current.lCol == board[0].length - 1
+                    || current.rRow == board.length - 1 && current.rCol == board[0].length - 1) {
+                cost = current.cost;
+                break;
+            }
 
             for (int[] dir : dirs) {
                 int nlRow = current.lRow + dir[0];
@@ -70,13 +71,13 @@ public class MovingBlocks {
 
                 if (canMove(next, board, visited)) {
                     queue.offer(next);
-                    visited[nlRow][nlCol] = true;
-                    visited[nrRow][nrCol] = true;
-
-                    if (next.lRow == board.length - 1 && next.lCol == board[0].length - 1
-                            ||next.rRow == board.length - 1 && next.rCol == board[0].length - 1) {
-                        cost = next.cost;
-                        return cost;
+                    if (next.status == 'h') {
+                        visited[0][nlRow][nlCol] = true;
+                        visited[0][nrRow][nrCol] = true;
+                    }
+                    else {
+                        visited[1][nlRow][nlCol] = true;
+                        visited[1][nrRow][nrCol] = true;
                     }
                 }
             }
@@ -92,20 +93,11 @@ public class MovingBlocks {
                     if (canRotate(next, board)) {
                         queue.offer(new Point(current.lRow, current.lCol, nlRow, nlCol, current.cost + 1, 'v'));
                         queue.offer(new Point(nrRow, nrCol, current.rRow, current.rCol, current.cost + 1, 'v'));
-                        visited[nlRow][nlCol] = true;
-                        visited[nrRow][nrCol] = true;
                         rotated[current.lRow][current.lCol] = true;
                         rotated[current.rRow][current.rCol] = true;
-
-                        if (next.lRow == board.length - 1 && next.lCol == board[0].length - 1
-                                ||next.rRow == board.length - 1 && next.rCol == board[0].length - 1) {
-                            cost = next.cost;
-                            return cost;
-                        }
                     }
                 }
             }
-
             else {
                 for (int[] rotate : vRotates) {
                     int nlRow = current.lRow + rotate[0];
@@ -116,17 +108,8 @@ public class MovingBlocks {
                     if (canRotate(next, board)) {
                         queue.offer(new Point(current.lRow, current.lCol, nlRow, nlCol, current.cost + 1, 'h'));
                         queue.offer(new Point(nrRow, nrCol, current.rRow, current.rCol, current.cost + 1, 'h'));
-                        visited[nlRow][nlCol] = true;
-                        visited[nrRow][nrCol] = true;
                         rotated[current.lRow][current.lCol] = true;
                         rotated[current.rRow][current.rCol] = true;
-
-                        if (next.lRow == board.length - 1 && next.lCol == board[0].length - 1
-                                ||next.rRow == board.length - 1 && next.rCol == board[0].length - 1) {
-                            cost = next.cost;
-                            return cost;
-                        }
-
                     }
                 }
             }
@@ -134,11 +117,14 @@ public class MovingBlocks {
         }
 
 //        System.out.println();
-//        PrintUtils.printArray(visited);
+        PrintUtils.printArray(visited[0]);
 //        PrintUtils.printArray(rotated);
         return cost;
     }
 
+    /*
+    * map 크기 안에 있는지 확인
+    * */
     static boolean isOk(Point moved, int[][] map) {
         return moved.lRow >= 0 && moved.lRow < map.length
                 && moved.rRow >= 0 && moved.rRow < map.length
@@ -147,16 +133,20 @@ public class MovingBlocks {
                 ;
     }
 
-    static boolean canMove(Point moved, int[][] map, boolean[][] visited) {
+    /*
+    * 이동 가능 여부
+    * */
+    static boolean canMove(Point moved, int[][] map, boolean[][][] visited) {
+        int type = (moved.status == 'h') ? 0 : 1;
         return isOk(moved, map)
-                && (!visited[moved.lRow][moved.lCol] || !visited[moved.rRow][moved.rCol])
+                && (!visited[type][moved.lRow][moved.lCol] || !visited[type][moved.rRow][moved.rCol])
                 && map[moved.lRow][moved.lCol] == 0
                 && map[moved.rRow][moved.rCol] == 0
                 ;
     }
 
     /*
-    * 회전하는 가능 여부
+    * 회전 가능 여부
     * */
     static boolean canRotate(Point moved, int[][] map) {
         return isOk(moved, map)
