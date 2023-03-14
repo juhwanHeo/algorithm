@@ -14,6 +14,13 @@ public class PrintUtils {
         System.out.println("=====================\n");
     }
 
+    public static void printArray(boolean[][] array2) {
+        for (boolean[] array1 : array2) {
+            System.out.println(Arrays.toString(array1));
+        }
+        System.out.println("=====================\n");
+    }
+
     public static void printArray(long[] array1) {
         System.out.println(Arrays.toString(array1));
         System.out.println("=====================\n");
