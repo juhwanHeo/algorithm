@@ -9,7 +9,6 @@ import java.util.Queue;
  * @2020 kakao blind
  * @TestName: 블록 이동하기
  * @URL: https://programmers.co.kr/learn/courses/30/lessons/60063
- * @COMMENT: 10, 14 TC 틀림
  */
 public class MovingBlocks {
     static class Point {
