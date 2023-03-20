@@ -50,7 +50,7 @@ public class MovingBlocks {
         boolean[][][] visited = new boolean[2][board.length][board[0].length];
         boolean[][] rotated = new boolean[board.length][board[0].length];
         visited[0][0][0] = true;
-        visited[0][1][0] = true;
+        visited[0][0][1] = true;
         queue.offer(new Point(0, 0, 0, 1, 0, 'h'));
         while (!queue.isEmpty()) {
             Point current = queue.poll();
