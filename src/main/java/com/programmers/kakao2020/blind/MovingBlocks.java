@@ -82,41 +82,25 @@ public class MovingBlocks {
             }
 
             if (rotated[current.lRow][current.lCol] && rotated[current.rRow][current.rCol]) continue;
-            if (current.status == 'h') {
-                for (int[] rotate : hRotates) {
-                    int nlRow = current.lRow + rotate[0];
-                    int nlCol = current.lCol + rotate[1];
-                    int nrRow = current.rRow + rotate[2];
-                    int nrCol = current.rCol + rotate[3];
-                    Point next = new Point(nlRow, nlCol, nrRow, nrCol, current.cost + 1, current.status);
-                    if (canRotate(next, board)) {
-                        queue.offer(new Point(current.lRow, current.lCol, nlRow, nlCol, current.cost + 1, 'v'));
-                        queue.offer(new Point(nrRow, nrCol, current.rRow, current.rCol, current.cost + 1, 'v'));
-                        rotated[current.lRow][current.lCol] = true;
-                        rotated[current.rRow][current.rCol] = true;
-                    }
+            for (int[] rotate : current.status == 'h' ? hRotates : vRotates) {
+                int nlRow = current.lRow + rotate[0];
+                int nlCol = current.lCol + rotate[1];
+                int nrRow = current.rRow + rotate[2];
+                int nrCol = current.rCol + rotate[3];
+                Point next = new Point(nlRow, nlCol, nrRow, nrCol, current.cost + 1, current.status);
+                if (canRotate(next, board)) {
+                    char nStatus = current.status == 'h' ? 'v' : 'h';
+                    queue.offer(new Point(current.lRow, current.lCol, nlRow, nlCol, current.cost + 1, nStatus));
+                    queue.offer(new Point(nrRow, nrCol, current.rRow, current.rCol, current.cost + 1, nStatus));
+                    rotated[current.lRow][current.lCol] = true;
+                    rotated[current.rRow][current.rCol] = true;
                 }
             }
-            else {
-                for (int[] rotate : vRotates) {
-                    int nlRow = current.lRow + rotate[0];
-                    int nlCol = current.lCol + rotate[1];
-                    int nrRow = current.rRow + rotate[2];
-                    int nrCol = current.rCol + rotate[3];
-                    Point next = new Point(nlRow, nlCol, nrRow, nrCol, current.cost + 1, current.status);
-                    if (canRotate(next, board)) {
-                        queue.offer(new Point(current.lRow, current.lCol, nlRow, nlCol, current.cost + 1, 'h'));
-                        queue.offer(new Point(nrRow, nrCol, current.rRow, current.rCol, current.cost + 1, 'h'));
-                        rotated[current.lRow][current.lCol] = true;
-                        rotated[current.rRow][current.rCol] = true;
-                    }
-                }
-            }
-
         }
 
 //        System.out.println();
         PrintUtils.printArray(visited[0]);
+        PrintUtils.printArray(visited[1]);
 //        PrintUtils.printArray(rotated);
         return cost;
     }
