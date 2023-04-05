@@ -30,4 +30,19 @@ class MineralsMiningTest {
         assertEquals(result, expected);
     }
 
+    @Test
+    void solution3() {
+        int[] picks = {1, 1, 0};
+        String[] minerals = {
+                "iron", "iron", "diamond", "iron", "stone",
+                "diamond", "diamond", "diamond"
+        };
+
+        int result = MineralsMining.solution(picks, minerals);
+        int expected = 12;
+
+        System.out.println("result: " + result);
+        assertEquals(result, expected);
+    }
+
 }
