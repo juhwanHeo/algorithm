@@ -3,12 +3,10 @@ plugins {
 }
 
 group 'com.coding'
-sourceCompatibility = '1.8'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    mavenLocal()
 }
 
 dependencies {
